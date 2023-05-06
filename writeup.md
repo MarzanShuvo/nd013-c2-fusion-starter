@@ -25,7 +25,7 @@ Track initialization from unassigned measurements is implemented. Track initiali
 
 #### association.py:
 Nearest neighbor data association including association matrix is implemented. A method that returns nearest track and measurement for association is implemented. Gating method with chi-square-distribution is implemented to reduce complexity.
-[[my_tracking_results.avi]](video/my_tracking_results.avi)
+[[my_tracking_results.mp4]](video/my_tracking_results.mp4)
 
 #### measurement.py:
 It Assosiates track and camera measurement in addition to association between track and Lidar measurement. As result of these tow associations, Lidar detection and Camera detection are fused.
