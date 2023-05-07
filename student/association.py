@@ -114,24 +114,10 @@ class Association:
         ############
         # TODO Step 3: return True if measurement lies inside gate, otherwise False
         ############
-        df = None
-        gate_val = None
-        if sensor.name == 'lidar':
-            #While fine tuning the algorihm, we find that it's better to have a larger gate threshold for lidar 
-            #which means current lidar noise is a bit underestimated
-            df = 2 
-            gate_val = params.gating_threshold
-        
-        if sensor.name == 'camera':
-            gate_val = params.gating_threshold
-            df = 1
-        x= MHD * MHD
-        per = chi2.cdf(x, df)
-        if sensor.name == 'lidar':
-            print("lidar chisqr = {}".format(per))
-        if per <  gate_val:
+       limit = chi2.ppf(params.gating_threshold, df=sensor.dim_meas)
+       if MHD < limit:
             return True
-        else:
+       else:
             return False
         
         ############
